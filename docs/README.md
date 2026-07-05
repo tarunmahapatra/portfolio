@@ -69,16 +69,25 @@ No UI changes needed — the feed and sidebar update automatically.
 
 ## Deployment
 
-Pushes to `main` trigger the workflow in `.github/workflows/deploy.yml`.
+Deploy manually to the `gh-pages` branch:
+
+```bash
+npm run build
+npm run deploy
+```
+
+`npm run deploy` runs `gh-pages -d dist`, which pushes the built `dist/` folder to the `gh-pages` branch.
 
 ### Required GitHub settings
 
-1. **Settings → Pages → Source**: set to **GitHub Actions**
-2. **Settings → Environments → github-pages**: allow the `main` branch under **Deployment branches and tags**
+1. **Settings → Pages → Source**: set to **Deploy from a branch** → select **`gh-pages`**
+2. **Settings → Environments → github-pages**: allow the `gh-pages` branch under **Deployment branches and tags** (remove `main` if it was added)
 
 ### Stopping deployment
 
-- **Pause automatic deploys**: disable the workflow in **Actions → Deploy to GitHub Pages** → **Disable workflow**
+- **Pause manual deploys**: simply don't run `npm run deploy`
 - **Take the site offline**: change **Settings → Pages → Source** to **None**
 
 The site is deployed to `/portfolio/` because `vite.config.js` sets `base: '/portfolio/'`.
+
+The GitHub Actions workflow in `.github/workflows/deploy.yml` is not used for this deployment method.
