@@ -60,3 +60,25 @@ npm run preview   # preview production build
 ```
 
 No UI changes needed — the feed and sidebar update automatically.
+
+---
+
+## Live Site
+
+[https://tarunmahapatra.github.io/portfolio/](https://tarunmahapatra.github.io/portfolio/)
+
+## Deployment
+
+Pushes to `main` trigger the workflow in `.github/workflows/deploy.yml`.
+
+### Required GitHub settings
+
+1. **Settings → Pages → Source**: set to **GitHub Actions**
+2. **Settings → Environments → github-pages**: allow the `main` branch under **Deployment branches and tags**
+
+### Stopping deployment
+
+- **Pause automatic deploys**: disable the workflow in **Actions → Deploy to GitHub Pages** → **Disable workflow**
+- **Take the site offline**: change **Settings → Pages → Source** to **None**
+
+The site is deployed to `/portfolio/` because `vite.config.js` sets `base: '/portfolio/'`.
