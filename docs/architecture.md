@@ -33,11 +33,20 @@ src/
 │
 ├── posts/                   # Markdown source files for blog posts
 │   ├── genai-support.md
-│   ├── pdf-extraction.md
-│   └── dell-support-automation.md
+│   ├── dell-genai-search.md
+│   ├── internal-leadership-dashboard.md
+│   ├── sap-basis-automation.md
+│   └── pdf-extraction.md
 │
 └── lib/
     └── markdownLoader.js    # Maps post IDs to markdown content
+```
+
+```
+public/
+├── resume.md              # Resume source used by ResumeActions
+├── resume.pdf             # Downloadable resume PDF
+└── ...                    # Other static assets (favicon, etc.)
 ```
 
 ---
@@ -71,6 +80,10 @@ src/data/profile.js
       ├── RightSidebar.jsx
       ├── Footer.jsx
       └── Me.jsx
+
+public/resume.md
+      │
+      └── ResumeActions.jsx  # copy, download markdown, download PDF
 
 src/data/skills.js
       │

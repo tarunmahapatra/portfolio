@@ -1,7 +1,8 @@
-import { MapPin, Briefcase, GraduationCap, Calendar, FileText, User } from 'lucide-react';
+import { MapPin, Briefcase, GraduationCap, Calendar, User } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { profile } from '../data/profile';
 import { skills } from '../data/skills';
+import ResumeActions from './ResumeActions';
 
 function LeftSidebar() {
   return (
@@ -20,9 +21,7 @@ function LeftSidebar() {
           <Link to="/me" className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 text-sm font-medium transition">
             <User size={16} /> More About Me
           </Link>
-          <a href={profile.resume} download className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-accent text-white hover:bg-indigo-600 text-sm font-medium transition">
-            <FileText size={16} /> Download Resume
-          </a>
+          <ResumeActions className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-accent text-white hover:bg-indigo-600 text-sm font-medium transition w-full" menuAlign="left" />
         </div>
       </div>
 

@@ -12,3 +12,7 @@ At Dell, I'm part of the team building the backend orchestration behind the GenA
 ## My contribution
 
 I design prompt pipelines, retrieval systems, and agentic orchestration layers that turn complex support workflows into reliable, context-aware automation.
+
+## Impact
+
+Grounding responses in live product data and structured reasoning makes the support experience more accurate and consistent, especially when queries span multiple products and systems.

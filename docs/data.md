@@ -18,7 +18,6 @@ export const profile = {
   email: string,        // mailto target
   linkedin: string,     // Full LinkedIn URL
   github: string,       // Full GitHub URL
-  resume: string,       // Path to resume file (e.g. '/resume.docx')
   stats: {
     experience: string, // e.g. '3+ years'
     role: string,       // Current title
@@ -132,8 +131,10 @@ Each `.md` file corresponds to a post entry in `posts.js` with `type: 'markdown'
 | File | Post ID | Title |
 |---|---|---|
 | `genai-support.md` | `genai-support` | Building GenAI Support Experiences at Dell |
+| `dell-genai-search.md` | `dell-genai-search` | Search Response with RAG at Dell |
+| `internal-leadership-dashboard.md` | `internal-leadership-dashboard` | Internal Dashboard for Leadership |
+| `sap-basis-automation.md` | `sap-basis-automation` | SAP BASIS Automation with Python and Selenium |
 | `pdf-extraction.md` | `pdf-extraction` | PDF Data Extraction Tool |
-| `dell-support-automation.md` | `dell-support-automation` | Dell Support Automation |
 
 ### Markdown Conventions
 - Use `##` for section headings (maps to `prose h2` styles)

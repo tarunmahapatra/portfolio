@@ -6,7 +6,6 @@ export const profile = {
   email: 'tarunmahapatra2001@gmail.com',
   linkedin: 'https://linkedin.com/in/tarunranjanmahapatra',
   github: 'https://github.com/tarunranjanmahapatra',
-  resume: '/resume.docx',
   stats: {
     experience: '3+ years',
     role: 'Software Engineer 2',

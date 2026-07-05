@@ -37,7 +37,8 @@ Detailed documentation for every component in `src/components/`.
 **Purpose:** Sticky top navigation bar with logo, name, and nav links.
 
 ### Data
-- Reads `profile.name` and `profile.resume` from `src/data/profile.js`
+- Reads `profile.name` from `src/data/profile.js`
+- Uses `<ResumeActions />` for the resume dropdown
 
 ### Structure
 ```
@@ -46,12 +47,12 @@ Detailed documentation for every component in `src/components/`.
   └── Nav links (hidden on mobile)
        ├── Home → /
        ├── Me → /me
-       └── Resume → download link
+       └── Resume ▼ → dropdown: Copy for LLM, Copy as text, Download markdown, Download PDF
 ```
 
 ### Notes
 - Nav links are hidden on small screens (`hidden sm:flex`). No hamburger menu yet — candidate for future mobile improvement.
-- Resume is a direct download `<a>` tag, not a router link.
+- Resume actions live in `src/components/ResumeActions.jsx`.
 
 ---
 
@@ -137,7 +138,7 @@ When search returns no results:
   │    ├── Avatar (initials, gradient background)
   │    ├── Name + Headline
   │    ├── Role + Location
-  │    └── Buttons: More About Me → /me | Download Resume
+  │    └── Buttons: More About Me → /me | Resume ▼ dropdown
   │
   ├── Skills card
   │    ├── Top skills (indigo-50 bg, accent text, indigo-100 border)
@@ -271,12 +272,39 @@ When search returns no results:
        ├── Email
        ├── LinkedIn
        ├── GitHub
-       └── Resume (download, accent bg)
+       └── Resume ▼ (dropdown, accent bg)
 ```
 
 ### Notes
 - Similar to the LeftSidebar profile card but larger and with more action buttons.
 - **Not used** — the Me page hero is implemented inline as part of the bento grid. Candidate for removal.
+
+---
+
+## ResumeActions
+
+**File:** `src/components/ResumeActions.jsx`  
+**Purpose:** Dropdown button that exposes multiple ways to use the resume: copy for LLMs, copy as text, download markdown, or download PDF.
+
+### Props
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `className` | string | `""` | Classes applied to the trigger button |
+| `menuAlign` | `'left'` \| `'right'` | `'right'` | Dropdown menu alignment |
+
+### Data
+- Fetches `public/resume.md` via `import.meta.env.BASE_URL`
+- Uses `public/resume.pdf` for the PDF download
+
+### Actions
+- **Copy for LLM** — copies the markdown wrapped in a short prompt
+- **Copy as text** — copies the raw markdown text
+- **Download as markdown** — downloads `resume.md`
+- **Download as PDF** — downloads the existing `resume.pdf` file
+
+### Notes
+- Used by `Navbar`, `LeftSidebar`, `Me`, and `ProfileHeader`.
+- The resume source lives in `public/resume.md` and can be edited directly.
 
 ---
 

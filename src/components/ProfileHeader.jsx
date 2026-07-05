@@ -1,4 +1,5 @@
-import { Briefcase, MapPin, Mail, Linkedin, Github, FileText } from 'lucide-react';
+import { Briefcase, MapPin, Mail, Linkedin, Github } from 'lucide-react';
+import ResumeActions from './ResumeActions';
 
 function ProfileHeader({ profile }) {
   return (
@@ -27,9 +28,7 @@ function ProfileHeader({ profile }) {
         <a href={profile.github} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 text-sm font-medium transition">
           <Github size={16} /> GitHub
         </a>
-        <a href={profile.resume} download className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent text-white hover:bg-blue-700 text-sm font-medium transition">
-          <FileText size={16} /> Resume
-        </a>
+        <ResumeActions className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent text-white hover:bg-blue-700 text-sm font-medium transition" menuAlign="right" />
       </div>
     </div>
   );

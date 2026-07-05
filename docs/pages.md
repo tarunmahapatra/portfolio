@@ -134,7 +134,7 @@ Documentation for every page component in `src/pages/`.
 ### Data Sources
 | Section | Source |
 |---|---|
-| Hero | `profile.name`, `profile.headline`, `profile.tagline`, `profile.email`, `profile.linkedin`, `profile.github`, `profile.resume` |
+| Hero | `profile.name`, `profile.headline`, `profile.tagline`, `profile.email`, `profile.linkedin`, `profile.github` |
 | Stats | `profile.stats.experience`, `profile.stats.company`, `profile.location` |
 | Who I am | Hardcoded prose (2 paragraphs) |
 | Core Stack | `skills.top.slice(0, 8)` |

@@ -1,8 +1,9 @@
-import { Heart, Zap, Briefcase, Hash, Mail, Linkedin, Github, FileText, MapPin, Building2 } from 'lucide-react';
+import { Heart, Zap, Briefcase, Hash, Mail, Linkedin, Github, MapPin, Building2 } from 'lucide-react';
 import { profile } from '../data/profile';
 import { posts } from '../data/posts';
 import { skills } from '../data/skills';
 import ContactFooter from '../components/ContactFooter';
+import ResumeActions from '../components/ResumeActions';
 
 const experiencePosts = posts
   .filter(post => post.type === 'experience')
@@ -35,9 +36,7 @@ function Me() {
             <a href={profile.github} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-slate-700 hover:bg-slate-200 text-sm font-medium transition">
               <Github size={15} /> GitHub
             </a>
-            <a href={profile.resume} download className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent text-white hover:bg-indigo-600 text-sm font-medium transition">
-              <FileText size={15} /> Resume
-            </a>
+            <ResumeActions className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent text-white hover:bg-indigo-600 text-sm font-medium transition" menuAlign="right" />
           </div>
         </div>
 
@@ -142,6 +141,9 @@ function Me() {
             <h2 className="text-base font-semibold text-slate-900 mb-3">Activities</h2>
             <p className="text-sm text-slate-600 leading-relaxed">
               I'm part of Dell's Football Club and play in local tournaments around Bangalore. I also try to attend hackathons when they're on — it's a good way to stay sharp and meet people working on interesting problems.
+            </p>
+            <p className="text-sm text-slate-600 leading-relaxed mt-3">
+              Outside of sport, I take part in CSR events organised at Dell — including volunteering at school sports events and donating to underprivileged communities. I also mentor new hires through Dell's internal development programmes, helping them find their footing in the early months.
             </p>
           </div>
         </div>

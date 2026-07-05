@@ -1,6 +1,7 @@
-import { Home, User, FileText } from 'lucide-react';
+import { Home, User } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { profile } from '../data/profile';
+import ResumeActions from './ResumeActions';
 
 function Navbar() {
   return (
@@ -15,7 +16,7 @@ function Navbar() {
         <div className="hidden sm:flex items-center gap-1 text-sm font-medium text-slate-600">
           <Link to="/" className="px-3 py-2 rounded-lg hover:bg-slate-100 flex items-center gap-1.5"><Home size={16} /> Home</Link>
           <Link to="/me" className="px-3 py-2 rounded-lg hover:bg-slate-100 flex items-center gap-1.5"><User size={16} /> Me</Link>
-          <a href={profile.resume} download className="px-3 py-2 rounded-lg bg-accent text-white hover:bg-indigo-600 flex items-center gap-1.5"><FileText size={16} /> Resume</a>
+          <ResumeActions className="px-3 py-2 rounded-lg bg-accent text-white hover:bg-indigo-600 font-medium" menuAlign="right" />
         </div>
       </div>
     </nav>

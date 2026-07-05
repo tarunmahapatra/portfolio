@@ -1,11 +1,15 @@
 import genaiSupport from '../posts/genai-support.md?raw';
+import dellGenaiSearch from '../posts/dell-genai-search.md?raw';
+import internalLeadershipDashboard from '../posts/internal-leadership-dashboard.md?raw';
+import sapBasisAutomation from '../posts/sap-basis-automation.md?raw';
 import pdfExtraction from '../posts/pdf-extraction.md?raw';
-import dellSupportAutomation from '../posts/dell-support-automation.md?raw';
 
 const markdownMap = {
   'genai-support': genaiSupport,
+  'dell-genai-search': dellGenaiSearch,
+  'internal-leadership-dashboard': internalLeadershipDashboard,
+  'sap-basis-automation': sapBasisAutomation,
   'pdf-extraction': pdfExtraction,
-  'dell-support-automation': dellSupportAutomation,
 };
 
 export function getMarkdown(id) {
