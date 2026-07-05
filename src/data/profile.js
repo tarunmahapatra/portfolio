@@ -5,7 +5,7 @@ export const profile = {
   location: 'Bangalore, India',
   email: 'tarunmahapatra2001@gmail.com',
   linkedin: 'https://linkedin.com/in/tarunranjanmahapatra',
-  github: 'https://github.com/tarunranjanmahapatra',
+  github: 'https://github.com/tarunmahapatra',
   stats: {
     experience: '3+ years',
     role: 'Software Engineer 2',
