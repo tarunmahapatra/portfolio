@@ -140,8 +140,8 @@ When search returns no results:
   │    └── Buttons: More About Me → /me | Download Resume
   │
   ├── Skills card
-  │    ├── Top skills (blue badges)
-  │    └── Other skills (gray badges)
+  │    ├── Top skills (indigo-50 bg, accent text, indigo-100 border)
+  │    └── Other skills (slate-100 bg, slate-600 text, slate-200 border)
   │
   └── Education card
        ├── Degree + Field
@@ -221,6 +221,8 @@ When search returns no results:
 - `to` is optional — when absent, the title renders as plain text (used for non-navigable cards).
 - Date is formatted with `toLocaleDateString('en-US', { year, month: 'short', day: 'numeric' })`.
 - Tags render only if `post.tags` is non-empty.
+- Category badge: `bg-indigo-50 text-accent border border-indigo-100`
+- Tag chips: `bg-slate-100 text-slate-500 border border-slate-200`
 
 ---
 
@@ -274,7 +276,7 @@ When search returns no results:
 
 ### Notes
 - Similar to the LeftSidebar profile card but larger and with more action buttons.
-- Not currently used — the Me page implements its own inline header. Candidate for reuse/cleanup.
+- **Not used** — the Me page hero is implemented inline as part of the bento grid. Candidate for removal.
 
 ---
 
@@ -295,7 +297,7 @@ None — reads directly from `src/data/skills.js`.
 
 ### Notes
 - Shows **all** skills (no slice limit), unlike the LeftSidebar which caps at 10 + 6.
-- Not currently used in any active page — intended for a future full Skills section on `/me`.
+- **Not used** — Me page now renders `skills.top.slice(0, 8)` directly as indigo badge chips. Candidate for removal.
 
 ---
 
@@ -311,11 +313,15 @@ None — reads directly from `src/data/skills.js`.
 
 ### Structure
 ```
-<div> (bg-white, rounded-xl, border, text-center)
-  ├── "Let's connect."
-  └── Links: Email · LinkedIn · GitHub
+<div> (bg-white, rounded-xl, border border-slate-200, text-center, p-6)
+  ├── "Let's connect."  (font-semibold)
+  ├── Subtitle: "Open to work opportunities, collaborations, or just a good conversation."
+  └── Links (pill buttons):
+       ├── Email  (indigo-50 bg, accent text)
+       ├── LinkedIn  (slate-100 bg)
+       └── GitHub  (slate-100 bg)
 ```
 
 ### Notes
-- Not currently used in any active page — available as a drop-in CTA for the bottom of `/me` or posts.
+- **Actively used** on `/me` — rendered as `<ContactFooter profile={profile} />` in the bento grid (`col-span-12`, last cell before footer).
 - Accepts `profile` as a prop (not imported directly) to keep it portable.

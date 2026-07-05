@@ -42,44 +42,112 @@ Documentation for every page component in `src/pages/`.
 
 **File:** `src/pages/Me.jsx`  
 **Route:** `/me`  
-**Purpose:** Personal "About" page with bio sections and a full experience timeline.
+**Purpose:** Personal "About" page. Uses a bento grid layout — cards of varied widths scattered across a 12-column grid for a more dynamic, less column-y feel.
 
-### Layout
+> See `design-template.md → Me Page Redesign Spec` for full visual details.
+
+### Layout — Bento Grid (`grid-cols-12`, `max-w-5xl`)
+
 ```
-<div> (max-w-3xl, mx-auto)
-  ├── ← Back to home link
-  ├── Page heading: "About Me" + headline
-  └── <div> (space-y-5)
-       ├── SectionCard: Who I am
-       ├── Experience Timeline
-       ├── SectionCard: Hobbies
-       ├── SectionCard: Activities
-       └── SectionCard: Co-curriculars
+<div> (max-w-5xl, mx-auto, px-4, py-8)
+  <div> (grid grid-cols-12 gap-4 auto-rows-min)
+    │
+    ├── [1] Hero Banner          col-span-12
+    │    └── indigo-50→white gradient card
+    │         ├── Avatar (initials, from-accent to-violet-400)
+    │         ├── Name + Headline + Tagline
+    │         └── Pill buttons: Email · LinkedIn · GitHub · Resume
+    │
+    ├── [2] Stat cards (3×)      col-span-12 / sm:col-span-6 / md:col-span-4
+    │    ├── 💼 Experience (profile.stats.experience)
+    │    ├── 🏢 Current Company  (profile.stats.company)
+    │    └── 📍 Based in         (profile.location)
+    │
+    ├── [3] Who I am             col-span-12 / md:col-span-5
+    │    └── 2-paragraph prose bio (hardcoded)
+    │
+    ├── [4] Core Stack           col-span-12 / md:col-span-7
+    │    └── skills.top.slice(0, 8) — indigo badge chips
+    │
+    ├── [5] Experience           col-span-12 / md:col-span-8
+    │    └── accent-border cards, space-y-4
+    │         ├── Date subtitle + [● Current] badge on newest
+    │         ├── Role title
+    │         ├── Bullet body (from posts.js)
+    │         └── Tag chips
+    │
+    ├── [6] Hobbies + Activities col-span-12 / md:col-span-4
+    │    ├── Hobbies card  (Heart icon, prose paragraph)
+    │    └── Activities card (Zap icon, prose paragraph)
+    │
+    └── [7] ContactFooter        col-span-12
+         └── <ContactFooter profile={profile} />
 ```
 
-### SectionCard (local component)
-A reusable inline component defined within `Me.jsx`:
+### Section Details
 
-```jsx
-function SectionCard({ icon, title, children }) { ... }
-```
+#### [1] Hero Banner
+- Container: `col-span-12`, `bg-gradient-to-br from-indigo-50 via-white to-white`, `rounded-2xl`, `p-5 sm:p-8`
+- Avatar: `w-20 h-20 rounded-full bg-gradient-to-br from-accent to-violet-400` — initials, `text-2xl font-bold`
+- Name: `text-2xl sm:text-3xl font-bold text-slate-900`
+- Headline: `text-sm sm:text-base text-slate-600`
+- Tagline: `text-xs sm:text-sm text-slate-400`
+- Social buttons: `rounded-full`, `bg-slate-100` secondary / `bg-accent` primary (Resume)
 
-| Prop | Type | Description |
-|---|---|---|
-| `icon` | ReactNode | Lucide icon element |
-| `title` | string | Section heading |
-| `children` | ReactNode | Body content |
+#### [2] Stat Cards
+- Each: `col-span-12 sm:col-span-6 md:col-span-4`
+- Layout: `flex items-center gap-3 px-5 py-4`
+- Label: `text-xs text-slate-400`, Value: `text-sm font-semibold text-slate-800 truncate`
+- `min-w-0` on text container prevents overflow
 
-### Experience Timeline
-- Data: `posts` filtered to `type === 'experience'`, sorted newest-first.
-- Renders a vertical timeline with left border + dots.
-- Each entry shows: **date subtitle → role title → bullet point body → tags**.
-- This is the full/expanded version — the RightSidebar shows a compact (title + tags only) version.
+#### [3] Who I am
+- `col-span-12 md:col-span-5`
+- Two short paragraphs — hardcoded prose
+- `text-sm text-slate-600 leading-relaxed`
 
-### Notes
-- `SectionCard` is defined locally — if more pages need it, extract to `src/components/`.
-- `ProfileHeader` and `ContactFooter` components exist but are not used here — potential additions.
-- Content in SectionCards (Hobbies, Activities, Co-curriculars) is hardcoded prose, not data-driven.
+#### [4] Core Stack
+- `col-span-12 md:col-span-7`
+- `skills.top.slice(0, 8)` rendered as indigo badge chips
+- Chips: `bg-indigo-50 text-accent border border-indigo-100 rounded-full text-xs`
+
+#### [5] Experience Cards
+- `col-span-12 md:col-span-8`, internal `space-y-4`
+- Each card: `rounded-xl border border-slate-200 border-l-4 border-l-accent p-4`
+- "Current" badge on `idx === 0`: `bg-green-50 text-green-700 border border-green-100 rounded-full`
+- Body: `ul list-disc pl-4 text-xs text-slate-600`
+- Tags: `bg-slate-100 text-slate-500 border border-slate-200 rounded-md text-xs`
+- Data: `posts.filter(p => p.type === 'experience').sort(newest-first)`
+
+#### [6] Hobbies + Activities
+- Container: `col-span-12 md:col-span-4 flex flex-col gap-4`
+- Each card: `bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex-1`
+- Icon: `size={26}` in `text-accent`, above the heading
+- **Content format: prose paragraph** (`text-sm text-slate-600 leading-relaxed`) — not a bullet list
+- Hobbies text: covers football, cricket, swimming, hiking, racing games naturally in one paragraph
+- Activities text: Dell FC, local tournaments, hackathons in one paragraph
+
+#### [7] ContactFooter
+- `col-span-12`
+- Component: `<ContactFooter profile={profile} />`
+- Subtitle: "Open to work opportunities, collaborations, or just a good conversation."
+
+### Data Sources
+| Section | Source |
+|---|---|
+| Hero | `profile.name`, `profile.headline`, `profile.tagline`, `profile.email`, `profile.linkedin`, `profile.github`, `profile.resume` |
+| Stats | `profile.stats.experience`, `profile.stats.company`, `profile.location` |
+| Who I am | Hardcoded prose (2 paragraphs) |
+| Core Stack | `skills.top.slice(0, 8)` |
+| Experience | `posts` filtered `type === 'experience'`, sorted newest-first |
+| Hobbies / Activities | Hardcoded prose paragraphs |
+| ContactFooter | `profile` prop |
+
+### Responsiveness
+| Breakpoint | Behaviour |
+|---|---|
+| Mobile (`< sm`) | All cells `col-span-12` — single column stack |
+| `sm` (640px) | Stat cards: 2-per-row (`sm:col-span-6`) |
+| `md` (768px) | Full bento layout: Who I am (5), Core Stack (7), Experience (8), Hobbies+Activities (4) |
 
 ---
 

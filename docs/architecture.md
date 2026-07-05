@@ -17,13 +17,13 @@ src/
 │   ├── RightSidebar.jsx     # Contact, experience timeline, featured posts
 │   ├── PostCard.jsx         # Reusable post card wrapper
 │   ├── MarkdownPost.jsx     # Renders markdown content inside a PostCard
-│   ├── ProfileHeader.jsx    # Large profile banner (used on Me page)
-│   ├── SkillCloud.jsx       # Renders skill tags in two tiers
-│   └── ContactFooter.jsx    # Inline contact CTA block
+│   ├── ProfileHeader.jsx    # Large profile banner (unused — Me page has its own hero)
+│   ├── SkillCloud.jsx       # Renders skill tags in two tiers (unused — candidate for cleanup)
+│   └── ContactFooter.jsx    # Inline contact CTA block (used at bottom of /me)
 │
 ├── pages/
 │   ├── Home.jsx             # 3-column layout: Left | Feed | Right
-│   ├── Me.jsx               # About page with experience timeline
+│   ├── Me.jsx               # About page — bento grid (hero, stats, bio, experience, hobbies/activities, CTA)
 │   └── PostDetail.jsx       # Full post reader view
 │
 ├── data/
@@ -75,7 +75,8 @@ src/data/profile.js
 src/data/skills.js
       │
       ├── LeftSidebar.jsx   (top 10 + other 6)
-      └── SkillCloud.jsx    (all skills, used on Me page)
+      ├── Me.jsx            (top 8 — Core Stack section)
+      └── SkillCloud.jsx    (all skills — unused, candidate for removal)
 ```
 
 ---

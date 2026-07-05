@@ -27,7 +27,7 @@ export const profile = {
 };
 ```
 
-**Used by:** Navbar, LeftSidebar, RightSidebar, Footer, Me, ProfileHeader, ContactFooter
+**Used by:** Navbar, LeftSidebar, RightSidebar, Footer, Me, ContactFooter
 
 ---
 
@@ -43,7 +43,7 @@ export const skills = {
 };
 ```
 
-**Used by:** LeftSidebar (capped), SkillCloud (all)
+**Used by:** LeftSidebar (`top.slice(0,10)` + `other.slice(0,6)`), Me (`top.slice(0,8)` — Core Stack section), SkillCloud (all — unused)
 
 **Conventions:**
 - `top` should contain core professional skills in order of relevance.

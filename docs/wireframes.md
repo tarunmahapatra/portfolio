@@ -96,59 +96,87 @@ ASCII wireframes for all layouts and views.
 
 ---
 
-## Me Page (`/me`) — Desktop
+## Me Page (`/me`) — Desktop Bento Grid (`max-w-5xl`, `grid-cols-12`)
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
 │ NAVBAR                                                               │
 └─────────────────────────────────────────────────────────────────────┘
 
-                  ┌───────────────────────────┐
-                  │  ← Back to home           │
-                  │                           │
-                  │  About Me                 │
-                  │  AI Engineer @ Dell...    │
-                  │                           │
-                  │ ┌─────────────────────┐   │
-                  │ │ 👤 Who I am         │   │
-                  │ │ Paragraph...        │   │
-                  │ │ Paragraph...        │   │
-                  │ └─────────────────────┘   │
-                  │                           │
-                  │ ┌─────────────────────┐   │
-                  │ │ 💼 Experience       │   │
-                  │ │                     │   │
-                  │ │ │ Feb 2025—Present  │   │
-                  │ │ • SE2 — Dell        │   │
-                  │ │   · Bullet 1        │   │
-                  │ │   · Bullet 2        │   │
-                  │ │   [Python][RAG]     │   │
-                  │ │                     │   │
-                  │ │ │ Aug 2023—Jan 2025 │   │
-                  │ │ • SE — Dell         │   │
-                  │ │   · Bullet 1        │   │
-                  │ │   [Python][Selenium]│   │
-                  │ │                     │   │
-                  │ │   ...               │   │
-                  │ └─────────────────────┘   │
-                  │                           │
-                  │ ┌─────────────────────┐   │
-                  │ │ ❤ Hobbies           │   │
-                  │ └─────────────────────┘   │
-                  │                           │
-                  │ ┌─────────────────────┐   │
-                  │ │ ♪ Activities        │   │
-                  │ └─────────────────────┘   │
-                  │                           │
-                  │ ┌─────────────────────┐   │
-                  │ │ 🏆 Co-curriculars   │   │
-                  │ └─────────────────────┘   │
-                  └───────────────────────────┘
+┌─────────────────────────────────────────────────────────────────────┐
+│  [1] HERO BANNER  (col-span-12)                                      │
+│  bg: indigo-50 → white gradient                                      │
+│                                                                      │
+│  [TM]  Tarun Mahapatra                                               │
+│        AI Engineer @ Dell Technologies — GenAI Backend...            │
+│        Building backend systems for GenAI-powered support...         │
+│                                                                      │
+│  [✉ Email]  [in LinkedIn]  [gh GitHub]  [↓ Resume]                  │
+└─────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────┐ ┌─────────────────────┐ ┌───────────────────┐
+│  [2a] EXPERIENCE    │ │  [2b] COMPANY        │ │  [2c] LOCATION    │
+│  💼 3+ years        │ │  🏢 Dell Technologies │ │  📍 Bangalore, IN │
+│  (md:col-span-4)    │ │  (md:col-span-4)     │ │  (md:col-span-4)  │
+└─────────────────────┘ └─────────────────────┘ └───────────────────┘
+
+┌──────────────────────────────┐ ┌──────────────────────────────────┐
+│  [3] WHO I AM                │ │  [4] CORE STACK                  │
+│  (md:col-span-5)             │ │  (md:col-span-7)                 │
+│                              │ │                                  │
+│  I'm an AI Engineer at       │ │  [Python] [LLM Orchestration]    │
+│  Dell Technologies...        │ │  [RAG] [Agentic AI] [Neo4j]     │
+│                              │ │  [Prompt Eng.] [Vector DBs]     │
+│  I started in full-stack...  │ │  [MCP]                          │
+└──────────────────────────────┘ └──────────────────────────────────┘
+
+┌─────────────────────────────────────────┐ ┌───────────────────────┐
+│  [5] EXPERIENCE  (md:col-span-8)        │ │  [6] HOBBIES          │
+│                                         │ │  (md:col-span-4)      │
+│ ▌ Feb 2025—Present       [● Current]   │ │  ❤                    │
+│   Software Engineer 2 — Dell           │ │                       │
+│   · Building GenAI orchestration...    │ │  Outside of work, I   │
+│   [Python] [Neo4j] [RAG]              │ │  spend most of my     │
+│                                         │ │  time playing         │
+│ ▌ Aug 2023—Jan 2025                    │ │  football...          │
+│   Software Engineer — Dell             │ ├───────────────────────┤
+│   · Automated SAP tasks (−80% time)   │ │  [6b] ACTIVITIES      │
+│   [Python] [Selenium] [React.js]      │ │  ⚡                    │
+│                                         │ │                       │
+│ ▌ Jan 2023—May 2023                    │ │  I'm part of Dell's   │
+│   Winter Intern — Dell                 │ │  Football Club and    │
+│   · Migrated tool to Spring Boot...   │ │  play in local        │
+│   [Java] [Spring Boot] [Angular]      │ │  tournaments...       │
+│                                         │ └───────────────────────┘
+│ ▌ May 2022—Jul 2022                    │
+│   Summer Intern — Dell                 │
+│   · Built PDF extraction tool...      │
+│   [Python] [OpenCV]                   │
+└─────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────┐
+│  [7] PHOTO CAROUSEL  (col-span-12)  [TODO]                           │
+│  ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐                       │
+│  │ img  │ │ img  │ │ img  │ │ img  │ │ img  │  ← scrollable        │
+│  └──────┘ └──────┘ └──────┘ └──────┘ └──────┘                       │
+└─────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────┐
+│  [8] LET'S CONNECT CTA  (col-span-12)                               │
+│  "Let's connect."                                                    │
+│  Open to work opportunities, collaborations, or just a good chat.   │
+│  [✉ email]  [in LinkedIn]  [gh GitHub]                              │
+└─────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────┐
 │ FOOTER                                                               │
 └─────────────────────────────────────────────────────────────────────┘
 ```
+
+### Mobile behaviour (< `md`)
+- All cells collapse to `col-span-12` — single full-width column
+- Stat cards: 2-per-row at `sm` (`sm:col-span-6`), full width below that
+- Experience and Hobbies+Activities stack vertically (no side-by-side)
 
 ---
 
